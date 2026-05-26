@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Santiago Hernandez — Diseñador gráfico. Tecnicatura en Diseño Gráfico, Universidad Provincial de Córdoba." />
+  <meta name="author" content="Santiago Hernandez" />
+  <title>diseñe | Santiago Hernandez — Portafolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet" />
+
+  <!-- Link al stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Page-specific micro-styles (IA)*/
+    .scroll-indicator {
+      position: absolute;
+      bottom: var(--sp-5);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-1);
+      font-family: var(--f-heading);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-text-soft);
+    }
+    .scroll-indicator::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: var(--c-border);
+      animation: scrollLine 1.8s ease infinite;
+    }
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      51%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+    .tag-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      margin-top: var(--sp-4);
+    }
+    .tag {
+      font-family: var(--f-heading);
+      font-size: var(--fs-xs);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--c-border);
+      padding: 0.3em 0.8em;
+      color: var(--c-text-soft);
+    }
+    .blog-link-banner {
+      background: var(--c-tertiary);
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+      padding-block: var(--sp-3);
+      text-align: center;
+    }
+    .blog-link-banner p {
+      font-family: var(--f-heading);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-text-soft);
+    }
+    .blog-link-banner a {
+      font-weight: 400;
+      color: var(--c-primary);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+
+        <!-- Logo / Brand -->
+        <a href="index.html" class="site-logo" aria-label="diseñe — Santiago Hernandez, volver al inicio">
+          <span class="site-logo__mark">diseñe</span>
+          <span class="site-logo__divider" aria-hidden="true"></span>
+          <span class="site-logo__name">Santiago Hernandez</span>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="site-nav" aria-label="Navegación principal">
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+
+          <ul class="site-nav__list" id="main-nav" role="list">
+            <li><a href="index.html" class="site-nav__link is-active" aria-current="page">Inicio</a></li>
+            <li><a href="#sobre-mi" class="site-nav__link">Sobre mí</a></li>
+            <li><a href="#trabajos" class="site-nav__link">Trabajos</a></li>
+            <li><a href="pagina numero dos.html" class="site-nav__link">Portafolio completo</a></li>
+            <li><a href="#contacto" class="site-nav__link">Contacto</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Blog link banner -->
+  <div class="blog-link-banner" role="complementary">
+    <p>También en el blog: <a href="https://santiagohernandez58.wordpress.com/" target="_blank" rel="noopener noreferrer">Tome acción, Ud. diseñe. →</a></p>
+  </div>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Presentación">
+      <div class="container hero__inner">
+
+        <p class="hero__eyebrow" aria-hidden="true">Diseñador Gráfico · Córdoba, Argentina</p>
+
+        <h1 class="hero__title">
+          Santiago<br>
+          Hernan<em>dez</em>
+        </h1>
+
+        <p class="hero__desc">
+          Soy estudiante de la Tecnicatura en Diseño Gráfico en la Universidad Provincial de Córdoba,
+          en mi último año de carrera. Diseño desde antes de iniciar la carrera: marcas, tipografías,
+          webs, interfaces y sistemas visuales.
+        </p>
+
+        <div class="hero__cta">
+          <a href="#trabajos" class="btn btn--primary">Ver trabajos</a>
+          <a href="pagina numero dos.html" class="btn btn--outline">Portafolio completo</a>
+        </div>
+
+        <div class="tag-strip" aria-label="Habilidades">
+          <span class="tag">Figma</span>
+          <span class="tag">Adobe Suite</span>
+          <span class="tag">Diseño web</span>
+          <span class="tag">Marketing</span>
+          <span class="tag">Tipografía</span>
+          <span class="tag">Diseño de información</span>
+        </div>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">Scroll</div>
+    </section>
+
+    <!-- SECCION SOBRE MÍ -->
+    <section class="section" id="sobre-mi" aria-labelledby="sobre-mi-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">Sobre mí</p>
+          <h2 class="section-title" id="sobre-mi-title">Quién soy</h2>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-img">
+            <img
+              src="images/Book BASTA CHICO - 193.jpg"
+              alt="Santiago Hernandez trabajando en un proyecto de diseño"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="about-content">
+            <p class="section-label">Santiago Hernandez</p>
+
+            <blockquote>
+              "Toda la vida me interesó la producción audiovisual, el diseño, la web y las revistas."
+            </blockquote>
+
+            <p>
+              Me llamo Santiago Hernandez, soy oriundo de Córdoba, pero viví en el interior.
+              Esa historia me llevó a estudiar la Tecnicatura Universitaria en Diseño Gráfico,
+              donde estoy en mi último año.
+            </p>
+            
+            <p>
+  Diseñador gráfico en formación, especializado en identidad visual y tipografía.
+  Estudio en la Universidad Provincial de Córdoba y trabajo con Adobe Suite y Figma.
+</p>
+<p>
+  Me interesa la intersección entre diseño editorial, web y producción audiovisual.
+  Autodidacta desde antes de la carrera formal.
+</p>
+<p>
+  Proyecto continuar con estudios superiores en diseño de comunicación visual.
+</p>
+            <div style="margin-top: var(--sp-4);">
+              <a href="pagina numero dos.html" class="btn btn--outline">Ver trayectoria académica →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="section skills-section" aria-labelledby="skills-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">Habilidades</p>
+          <h2 class="section-title" id="skills-title">Mis disciplinas</h2>
+        </div>
+
+        <div class="skills-grid" role="list">
+
+          <div class="skill-item" role="listitem">
+            <span class="skill-item__num">01</span>
+            <span class="skill-item__name">Figma</span>
+            <div class="skill-item__bar" aria-hidden="true"></div>
+          </div>
+
+          <div class="skill-item" role="listitem">
+            <span class="skill-item__num">02</span>
+            <span class="skill-item__name">Adobe Suite</span>
+            <div class="skill-item__bar" aria-hidden="true"></div>
+          </div>
+
+          <div class="skill-item" role="listitem">
+            <span class="skill-item__num">03</span>
+            <span class="skill-item__name">Diseño web</span>
+            <div class="skill-item__bar" aria-hidden="true"></div>
+          </div>
+
+          <div class="skill-item" role="listitem">
+            <span class="skill-item__num">04</span>
+            <span class="skill-item__name">Marketing</span>
+            <div class="skill-item__bar" aria-hidden="true"></div>
+          </div>
+
+          <div class="skill-item" role="listitem">
+            <span class="skill-item__num">05</span>
+            <span class="skill-item__name">Diseño de información</span>
+            <div class="skill-item__bar" aria-hidden="true"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TRABAJOS DESTACADOS -->
+    <section class="section" id="trabajos" aria-labelledby="trabajos-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">Portafolio</p>
+          <h2 class="section-title" id="trabajos-title">Trabajos seleccionados</h2>
+        </div>
+
+        <!-- Featured project (IA)-->
+        
+  
+        <div class="featured-card" style="margin-bottom: 1px;">
+          <div class="featured-card__img">
+            <figure>
+            <img
+              src="images/trabajo agd.png"
+              alt="Diseño de página web AGD — Asociación de Deportes de Gravedad"
+              loading="lazy"
+            />
+            <figcaption>
+    «Diseño de página web AGD» — Santiago Hernandez, 2024.
+    Trabajo académico propio. 
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+  </figcaption>
+</figure>
+          </div>
+          <div class="featured-card__body">
+            <p class="featured-card__tag">Diseño web · Identidad</p>
+            <h3 class="featured-card__title">Diseño Web AGD</h3>
+            <p class="featured-card__desc">
+              Diseño de la página web y su guía de estilos para la Asociación de Deportes
+              de Gravedad de San Juan. Trabajo académico orientado a brindar difusión
+              y accesibilidad al deporte de alto rendimiento.
+            </p>
+            <a href="pagina numero dos.html#agd" class="btn btn--outline">Ver proyecto →</a>
+          </div>
+        </div>
+
+        <!-- Grid de proyectos -->
+        <div class="portfolio-grid">
+
+          <article class="project-card">
+            <div class="project-card__img">
+              <img
+                src="images/mutek trabajo2.png"
+                alt="MUTEK — Identidad visual para fiesta electrónica"
+                loading="lazy"
+                width="616" height="465"
+              />
+            </div>
+            <div class="project-card__body">
+              <p class="project-card__tag">Identidad · Tipografía</p>
+              <h3 class="project-card__title">MUTEK</h3>
+              <p class="project-card__desc">
+                Identidad visual, cartelería, papelería y promoción para la fiesta
+                electrónica MUTEK. Trabajo de Tipografía 2, 2023.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__img">
+              <img
+                src="images/trabajo TIPO.png"
+                alt="Art Moderne — Tipografía experimental display"
+                loading="lazy"
+                width="538" height="398"
+              />
+            </div>
+            <div class="project-card__body">
+              <p class="project-card__tag">Tipografía experimental</p>
+              <h3 class="project-card__title">Art Moderne</h3>
+              <p class="project-card__desc">
+                Diseño y desarrollo de una tipografía display experimental inspirada en el
+                Art Nouveau y el Palacio Ferreira de Córdoba. Final de Tipografía 2.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__img">
+              <img
+                src="images/teatro trabajo.png"
+                alt="Teatro Griego — Señalética"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-card__body">
+              <p class="project-card__tag">Señalética · Entorno</p>
+              <h3 class="project-card__title">Teatro Griego</h3>
+              <p class="project-card__desc">
+                Propuesta señalética para el Teatro Griego de Córdoba: set de señalizaciones
+                interiores/exteriores y mapa del recinto.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__img">
+
+              <figure>
+              <img
+                src="images/trabajo ullm.png"
+                alt="Fundación ULLM — Identidad de marca"
+                loading="lazy"
+              /> 
+              <figcaption>
+    «Diseño de identidad para ULLM» — Santiago Hernandez, 2024.
+    Trabajo académico propio. 
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+  </figcaption>
+</figure>
+              
+            </div>
+            <div class="project-card__body">
+              <p class="project-card__tag">Identidad · Extensión universitaria</p>
+              <h3 class="project-card__title">Identidad ULLM</h3>
+              <p class="project-card__desc">
+                Actualización de identidad de "Un litro de leche por Mes Córdoba", fundación
+                de ayuda a niños y adolescentes. Proyecto de extensión universitaria.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="margin-top: var(--sp-5); text-align: center;">
+          <a href="pagina numero dos.html" class="btn btn--primary">Ver portafolio completo</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA STRIP (IA) -->
+    <div class="cta-strip" role="complementary">
+      <div class="container--narrow" style="text-align:center;">
+        <h2>Tome acción, Ud. diseñe.</h2>
+        <p>¿Tenés un proyecto? Me interesa escucharte y construir algo juntos.</p>
+        <a href="#contacto" class="btn btn--inverse">Contactar</a>
+      </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto" aria-labelledby="contacto-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">Contacto</p>
+          <h2 class="section-title" id="contacto-title">Escribime</h2>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-item">
+            <p class="contact-item__label">Ubicación</p>
+            <p class="contact-item__value">Paraná 450, Córdoba</p>
+          </div>
+
+          <div class="contact-item">
+            <p class="contact-item__label">Teléfono</p>
+            <p class="contact-item__value">
+              <a href="tel:3571680749">3571 680749</a>
+            </p>
+          </div>
+
+          <div class="contact-item">
+            <p class="contact-item__label">Email</p>
+            <p class="contact-item__value">
+              <a href="mailto:Santiagoaguhernandez@gmail.com">santiagoaguhernandez<wbr>@gmail.com</a>
+            </p>
+          </div>
+
+          <div class="contact-item">
+            <p class="contact-item__label">Instagram</p>
+            <p class="contact-item__value">
+              <a href="https://instagram.com/santiagushernandez" target="_blank" rel="noopener noreferrer">@santiagushernandez</a>
+            </p>
+          </div>
+
+          <div class="contact-item">
+            <p class="contact-item__label">Blog</p>
+            <p class="contact-item__value">
+              <a href="https://santiagohernandez58.wordpress.com/" target="_blank" rel="noopener noreferrer">santiagohernandez58<wbr>.wordpress.com</a>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EL FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <span class="footer-brand">diseñe | Santiago Hernandez</span>
+
+        <nav class="footer-nav" aria-label="Navegación del pie de página">
+          <a href="index.html">Inicio</a>
+          <a href="pagina numero dos.html">Portafolio</a>
+          <a href="#contacto">Contacto</a>
+          <a href="https://santiagohernandez58.wordpress.com/" target="_blank" rel="noopener noreferrer">Blog</a>
+        </nav>
+
+        <!-- Licencia Creative Commons -->
+<div class="license" rel="license">
+  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer license">
+    <img
+      src="https://licensebuttons.net/l/by-nc/4.0/88x31.png"
+      alt="Licencia Creative Commons Atribución-NoComercial 4.0 Internacional"
+      width="88" height="31"
+    />
+  </a>
+  <p>
+    Este trabajo de <span property="cc:attributionName">Santiago Hernandez</span>
+    está bajo una licencia
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">
+      Creative Commons Atribución-NoComercial 4.0 Internacional
+    </a>.
+  </p>
+</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle script (IA)-->
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('.site-nav__list');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      navList.classList.toggle('is-open');
+      document.body.style.overflow = expanded ? '' : 'hidden';
+    });
+
+    // Close on link click (IA)
+    navList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
