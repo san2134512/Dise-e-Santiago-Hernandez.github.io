@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portafolio completo de Santiago Hernandez — Proyectos académicos de diseño gráfico, trayectoria académica y filosofía de diseño." />
+  <meta name="author" content="Santiago Hernandez" />
+  <title>Portafolio — diseñe | Santiago Hernandez</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Estilos para pagina 2, es mas comodo de de este modo, para no agregar otro styles */
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--c-border);
+      border: 1px solid var(--c-border);
+      margin-bottom: var(--sp-3);
+    }
+
+    /* Full-width project card (IA)*/
+    .project-row--wide {
+      grid-template-columns: 1fr;
+    }
+
+    .project-row--alt .project-card:first-child {
+      order: 2;
+    }
+    .project-row--alt .project-card:last-child {
+      order: 1;
+    }
+
+    .project-detail {
+      background: var(--c-bg);
+      padding: var(--sp-5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-detail__tag {
+      font-family: var(--f-heading);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-text-soft);
+      margin-bottom: var(--sp-2);
+    }
+
+    .project-detail__title {
+      font-family: var(--f-heading);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: var(--sp-3);
+    }
+
+    .project-detail__desc {
+      font-size: var(--fs-md);
+      line-height: 1.7;
+      color: var(--c-text-soft);
+      font-weight: 300;
+    }
+
+    .project-detail__img {
+      overflow: hidden;
+      background: var(--c-tertiary);
+    }
+    .project-detail__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 300px;
+      transition: transform 0.5s ease;
+    }
+    .project-row:hover .project-detail__img img { transform: scale(1.03); }
+
+    /* Seccion academica  */
+    .academic-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-7);
+      align-items: start;
+    }
+
+    /* Cursos */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+    }
+
+    .course-item {
+      border: 1px solid var(--c-border);
+      padding: var(--sp-3);
+    }
+
+    .course-item__title {
+      font-family: var(--f-heading);
+      font-size: var(--fs-sm);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--sp-1);
+    }
+
+    .course-item__sub {
+      font-family: var(--f-heading);
+      font-size: var(--fs-xs);
+      font-weight: 300;
+      color: var(--c-text-soft);
+      letter-spacing: 0.08em;
+    }
+
+    /* Blog posts section (IA)*/
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--c-border);
+      border: 1px solid var(--c-border);
+    }
+
+    .blog-card {
+      background: var(--c-bg);
+      padding: var(--sp-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+      transition: background var(--t-normal);
+    }
+    .blog-card:hover { background: var(--c-tertiary); }
+
+    .blog-card__tag {
+      font-family: var(--f-heading);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-text-soft);
+    }
+
+    .blog-card__title {
+      font-family: var(--f-heading);
+      font-size: var(--fs-md);
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .blog-card__excerpt {
+      font-size: var(--fs-sm);
+      line-height: 1.65;
+      color: var(--c-text-soft);
+      flex: 1;
+    }
+
+    .blog-card__link {
+      font-family: var(--f-heading);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-top: auto;
+    }
+
+    /* Estilo del manifiesto */
+    .manifesto {
+      background: var(--c-primary);
+      color: var(--c-bg);
+      padding: var(--sp-7) var(--sp-6);
+      text-align: center;
+    }
+
+    .manifesto h2 {
+      color: var(--c-bg);
+      font-size: var(--fs-xl);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: var(--sp-4);
+    }
+
+    .manifesto p {
+      font-size: var(--fs-md);
+      font-style: italic;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
+      max-width: 54ch;
+      margin-inline: auto;
+    }
+
+    @media (max-width: 820px) {
+      .project-row { grid-template-columns: 1fr; }
+      .academic-split { grid-template-columns: 1fr; gap: var(--sp-5); }
+      .courses-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .manifesto { padding: var(--sp-6) var(--sp-4); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+
+        <a href="index.html" class="site-logo" aria-label="diseñe — Santiago Hernandez, volver al inicio">
+          <span class="site-logo__mark">diseñe</span>
+          <span class="site-logo__divider" aria-hidden="true"></span>
+          <span class="site-logo__name">Santiago Hernandez</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Navegación principal">
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+
+          <ul class="site-nav__list" id="main-nav" role="list">
+            <li><a href="index.html" class="site-nav__link">Inicio</a></li>
+            <li><a href="index.html#sobre-mi" class="site-nav__link">Sobre mí</a></li>
+            <li><a href="#portfolio" class="site-nav__link">Portafolio</a></li>
+            <li><a href="#trayectoria" class="site-nav__link">Trayectoria</a></li>
+            <li><a href="index.html#contacto" class="site-nav__link">Contacto</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="page-hero" aria-label="Cabecera de página">
+      <div class="container">
+        <p class="section-label">Portafolio completo</p>
+        <h1 class="page-hero__title">Trabajos académicos<br>&amp; proyectos de diseño</h1>
+        <p class="page-hero__sub">
+          Proyectos realizados durante la Tecnicatura en Diseño Gráfico
+          en la Universidad Provincial de Córdoba.
+        </p>
+      </div>
+    </section>
+
+    <!-- PORTAFOLIO, Todos los proyectos -->
+    <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">Proyectos</p>
+          <h2 class="section-title" id="portfolio-title">Trabajos académicos</h2>
+        </div>
+
+        <!-- Proyecto 1: AGD -->
+        <div class="project-row" id="agd">
+          <div class="project-detail__img">
+            <img src="images/trabajo agd.png" alt="Diseño web AGD — pantallas del sitio" loading="lazy" />
+          </div>
+          <div class="project-detail">
+            <p class="project-detail__tag">Diseño web · Identidad · UX</p>
+            <h3 class="project-detail__title">Diseño de Página Web AGD</h3>
+            <p class="project-detail__desc">
+              Diseño completo de la página web y su guía de estilos para la Asociación de
+              Deportes de Gravedad de San Juan (AGD). Trabajo académico con el objetivo de
+              brindar difusión y accesibilidad al deporte. Incluye arquitectura de información,
+              sistema de grillas, paleta cromática y tipográfica.
+            </p>
+          </div>
+        </div>
+
+        <!-- Proyecto 2: Guía de estilos AGD -->
+        <div class="project-row" style="flex-direction:row-reverse;">
+          <div class="project-detail">
+            <p class="project-detail__tag">Sistema de diseño · Style guide</p>
+            <h3 class="project-detail__title">Guía de estilos AGD</h3>
+            <p class="project-detail__desc">
+              Complemento del proyecto web AGD: documentación completa del sistema visual.
+              Colores, tipografías, componentes, grillas y normas de uso aplicadas al diseño
+              del sitio institucional.
+            </p>
+          </div>
+          <div class="project-detail__img">
+            <img src="images/Guia de estilos agd.png" alt="Guía de estilos AGD — sistema visual" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Proyecto 3: MUTEK -->
+        <div class="project-row">
+          <div class="project-detail__img">
+            <img src="images/mutek trabajo2.png" alt="MUTEK — identidad visual y cartelería" loading="lazy" width="616" height="465" />
+          </div>
+          <div class="project-detail">
+            <p class="project-detail__tag">Identidad visual · Tipografía 2 · 2023</p>
+            <h3 class="project-detail__title">MUTEK</h3>
+            <p class="project-detail__desc">
+              Diseño de la identidad visual, cartelería, papelería y piezas de promoción para
+              la fiesta electrónica MUTEK. Trabajo académico de la materia Tipografía 2, 2023.
+              El proyecto explora la intersección entre música electrónica y lenguaje visual
+              contemporáneo.
+            </p>
+          </div>
+        </div>
+
+        <!-- Proyecto 4: Art Moderne -->
+        <div class="project-row">
+          <div class="project-detail">
+            <p class="project-detail__tag">Tipografía experimental · Display</p>
+            <h3 class="project-detail__title">Art Moderne</h3>
+            <p class="project-detail__desc">
+              Trabajo final de Tipografía 2: diseño y desarrollo de una tipografía experimental
+              display. Art Moderne fue inspirada en el Art Nouveau y en la arquitectura del
+              Palacio Ferreira de Córdoba. El proceso incluyó bocetado, vectorización y
+              pruebas de uso en composición tipográfica.
+            </p>
+          </div>
+          <div class="project-detail__img">
+            <img src="images/trabajo TIPO.png" alt="Art Moderne — tipografía experimental display" loading="lazy" width="538" height="398" />
+          </div>
+        </div>
+
+        <!-- Proyecto 5: Teatro Griego -->
+        <div class="project-row">
+          <div class="project-detail__img">
+            <img src="images/teatro trabajo.png" alt="Teatro Griego — señalética" loading="lazy" />
+          </div>
+          <div class="project-detail">
+            <p class="project-detail__tag">Señalética · Diseño de entorno</p>
+            <h3 class="project-detail__title">Teatro Griego</h3>
+            <p class="project-detail__desc">
+              Propuesta señalética para mejorar la señalización en el Teatro Griego de Córdoba.
+              Realizada como actividad para la materia "Diseño de envases y entorno". La propuesta
+              incluye un set de señalizaciones para el interior y exterior del teatro, y un mapa
+              de recorrido del espacio.
+            </p>
+          </div>
+        </div>
+
+        <!-- Proyecto 6: ULLM -->
+        <div class="project-row">
+          <div class="project-detail">
+            <p class="project-detail__tag">Identidad · Extensión universitaria</p>
+            <h3 class="project-detail__title">Identidad Fundación ULLM</h3>
+            <p class="project-detail__desc">
+              "Un litro de leche por Mes Córdoba" es una fundación que brinda ayuda a niños y
+              adolescentes de barrios necesitados: meriendas, ayuda escolar, ropa y mucho más.
+              La actualización de su identidad visual se realizó como proyecto de extensión
+              universitaria.
+            </p>
+          </div>
+          <div class="project-detail__img">
+            <img src="images/trabajo ullm.png" alt="Identidad Fundación ULLM" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Proyecto 7: Greca -->
+        <div class="project-row">
+          <div class="project-detail__img">
+            <img src="images/trabajo greca.png" alt="Identidad Greca — logotipo" loading="lazy" />
+          </div>
+          <div class="project-detail">
+            <p class="project-detail__tag">Identidad · Branding</p>
+            <h3 class="project-detail__title">Identidad Greca</h3>
+            <p class="project-detail__desc">
+              Greca es un emprendimiento de crochet. La emprendedora quería evocar la estética
+              de Grecia, específicamente de la isla de Creta. El resultado es una identidad que
+              fusiona iconografía helénica con sensibilidad artesanal contemporánea.
+            </p>
+          </div>
+        </div>
+
+        <!-- Proyecto 8: Beney -->
+        <div class="project-row">
+          <div class="project-detail">
+            <p class="project-detail__tag">Packaging · Rediseño</p>
+            <h3 class="project-detail__title">Etiquetas Fernet Beney</h3>
+            <p class="project-detail__desc">
+              Reimaginación de la etiqueta del famoso fernet cordobés Beney, con la consigna de
+              rediseñarla en base a otra cultura. El proyecto explora cómo los códigos visuales
+              de una identidad pueden reinterpretarse desde una perspectiva cultural radicalmente
+              distinta sin perder legibilidad de marca.
+            </p>
+          </div>
+          <div class="project-detail__img">
+            <img src="images/trabajo beney.png" alt="Etiquetas Fernet Beney — packaging" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MANIFIESTO (texto del final)-->
+    <div class="manifesto" role="complementary">
+      <h2>Tome acción,<br>Ud. diseñe.</h2>
+      <p>
+        Nunca necesité un motivo para crear. O sí: buscando ese motivo inconscientemente
+        fue que empecé diseño. La necesidad le da un porqué al hecho de crear.
+        Siempre me costó diseñar sin un motivo — y quizá diseñar <em>con</em> un motivo
+        es la única manera real de diseñar bien.
+      </p>
+    </div>
+
+    <!-- MI TRAYECTORIA ACADÉMICA -->
+    <section class="section" id="trayectoria" aria-labelledby="trayectoria-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">Formación</p>
+          <h2 class="section-title" id="trayectoria-title">Trayectoria académica</h2>
+        </div>
+
+        <div class="academic-split">
+
+          <!-- Timeline -->
+          <div>
+            <p class="section-label" style="margin-bottom: var(--sp-4);">Estudios formales</p>
+            <div class="timeline" role="list">
+
+              <div class="timeline-item" role="listitem">
+                <p class="timeline-item__date">2022 </p>
+                <h3 class="timeline-item__title"> Inicio la Tecnicatura Universitaria en Diseño Gráfico (TUDG)</h3>
+                <p class="timeline-item__sub">Universidad Provincial de Córdoba · Primer año</p>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <p class="timeline-item__date">2023</p>
+                <h3 class="timeline-item__title">Tipografía 2 — Tecnicatura Universitaria en Diseño Gráfico</h3>
+                <p class="timeline-item__sub">UPC 2do Año · Trabajo destacado: MUTEK &amp; Art Moderne</p>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <p class="timeline-item__date">2023</p>
+                <h3 class="timeline-item__title">Diseño de envases y entorno — TUDG</h3>
+                <p class="timeline-item__sub">UPC 2do Año· Proyecto: Señalética Teatro Griego</p>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <p class="timeline-item__date">2024</p>
+                <h3 class="timeline-item__title">Diseño web — Proyecto AGD — TUDG</h3>
+                <p class="timeline-item__sub">UPC Último Año · Sistema completo: web + guía de estilos en Figma</p>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <p class="timeline-item__date">2024</p>
+                <h3 class="timeline-item__title">Extensión universitaria "ULLM" — TUDG</h3>
+                <p class="timeline-item__sub">UPC Último Año· Proyecto de impacto social comunitario</p>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <p class="timeline-item__date">2025</p>
+                <h3 class="timeline-item__title">Licenciatura en Diseño (Ciclo de complementacion curricular)</h3>
+                <p class="timeline-item__sub">UPC · Primer Cuatrimestre </p>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <p class="timeline-item__date">Actualidad</p>
+                <h3 class="timeline-item__title">Licenciatura en Diseño (CCC) — Proyecto de investigación didáctica </h3>
+                <p class="timeline-item__sub">UPC · Segundo Cuatrimestre </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Cursos y habilidades -->
+          <div>
+            <p class="section-label" style="margin-bottom: var(--sp-4);">Formación complementaria, habilidades</p>
+            <div class="courses-grid">
+
+              <div class="course-item">
+                <h4 class="course-item__title">Figma</h4>
+                <p class="course-item__sub">UI/UX Design · Prototyping Google certificate y Coursera (incompletos)</p>
+              </div>
+
+              <div class="course-item">
+                <h4 class="course-item__title">Adobe Photoshop</h4>
+                <p class="course-item__sub">Edición · Curso en Escuela Villa Maria</p>
+              </div>
+
+              <div class="course-item">
+                <h4 class="course-item__title">Adobe Illustrator</h4>
+                <p class="course-item__sub">Identidad · Vectores · Curso en Escuela Villa Maria</p>
+              </div>
+
+              <div class="course-item">
+                <h4 class="course-item__title">Adobe InDesign</h4>
+                <p class="course-item__sub">Editorial · Layout · Curso en Escuela Villa Maria</p>
+              </div>
+
+              <div class="course-item">
+                <h4 class="course-item__title">HTML &amp; CSS</h4>
+                <p class="course-item__sub">Diseño web básico</p>
+              </div>
+
+              <div class="course-item">
+                <h4 class="course-item__title">Producción audiovisual</h4>
+                <p class="course-item__sub">Video · Edición · Curso de capacitacion online</p>
+              </div>
+
+              <div class="course-item">
+                <h4 class="course-item__title">Diseño de información</h4>
+                <p class="course-item__sub">Infografía · UX</p>
+              </div>
+
+              <div class="course-item">
+                <h4 class="course-item__title">Marketing digital</h4>
+                <p class="course-item__sub">Redes · Contenido</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         FILOSOFÍA DE DISEÑO
+    ══════════════════════════════ -->
+    <section class="section skills-section" aria-labelledby="filosofia-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">Enfoque</p>
+          <h2 class="section-title" id="filosofia-title">Filosofía de diseño</h2>
+        </div>
+
+        <div class="philosophy-grid">
+
+          <div class="philosophy-card">
+            <p class="philosophy-card__num">01</p>
+            <h3 class="philosophy-card__title">El motivo antes que la forma</h3>
+            <p class="philosophy-card__text">
+              Diseñar sin motivo es decorar. El diseño nace de una necesidad real: comunicar,
+              orientar, identificar, emocionar. Esa necesidad es el motor de todo el proceso.
+            </p>
+          </div>
+
+          <div class="philosophy-card">
+            <p class="philosophy-card__num">02</p>
+            <h3 class="philosophy-card__title">Tipografía como estructura</h3>
+            <p class="philosophy-card__text">
+              La tipografía no es ornamento: es arquitectura del mensaje. Cada decisión tipográfica
+              define la jerarquía, el tono y la identidad de una pieza.
+            </p>
+          </div>
+
+          <div class="philosophy-card">
+            <p class="philosophy-card__num">03</p>
+            <h3 class="philosophy-card__title">Contexto sobre tendencia</h3>
+            <p class="philosophy-card__text">
+              Las tendencias pasan. El contexto cultural, el usuario y el propósito son los únicos
+              parámetros que deberían guiar las decisiones de diseño.
+            </p>
+          </div>
+
+          <div class="philosophy-card">
+            <p class="philosophy-card__num">04</p>
+            <h3 class="philosophy-card__title">Aprendizaje permanente</h3>
+            <p class="philosophy-card__text">
+              El diseño cambia. Las herramientas cambian. La curiosidad y el aprendizaje autodidacta
+              son la única constante que permite mantenerse relevante y honesto con el oficio.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         BLOG / ESCRITURA
+    ══════════════════════════════ -->
+    <section class="section" aria-labelledby="blog-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">Blog — diseñe</p>
+          <h2 class="section-title" id="blog-title">Reflexiones sobre diseño</h2>
+        </div>
+
+        <div class="blog-grid" role="list">
+
+          <article class="blog-card" role="listitem">
+            <p class="blog-card__tag">Cibercultura</p>
+            <h3 class="blog-card__title">Visitantes y residentes</h3>
+            <p class="blog-card__excerpt">
+              Análisis del mapeo de presencia digital: cómo habitamos las plataformas y
+              qué dice eso de nuestra relación con la cultura de red.
+            </p>
+            <a href="https://santiagohernandez58.wordpress.com/2025/10/11/visitantes-y-residentes/" target="_blank" rel="noopener noreferrer" class="blog-card__link">Leer en el blog →</a>
+          </article>
+
+          <article class="blog-card" role="listitem">
+            <p class="blog-card__tag">Experimentación</p>
+            <h3 class="blog-card__title">Experimentación con IA</h3>
+            <p class="blog-card__excerpt">
+              Pruebas con Nano Banana, Adobe Firefly y Leonardo AI: dos prompts, tres plataformas
+              y resultados radicalmente distintos.
+            </p>
+            <a href="https://santiagohernandez58.wordpress.com/2025/10/11/experimentacion-con-ia/" target="_blank" rel="noopener noreferrer" class="blog-card__link">Leer en el blog →</a>
+          </article>
+
+          <article class="blog-card" role="listitem">
+            <p class="blog-card__tag">Diseño web</p>
+            <h3 class="blog-card__title">HTML y CSS básico</h3>
+            <p class="blog-card__excerpt">
+              Proceso de aprendizaje de código: de CodePen a Visual Studio Code, pasando por
+              W3Schools y GitHub Pages.
+            </p>
+            <a href="https://santiagohernandez58.wordpress.com/2026/04/26/diseno-html-y-css-basico/" target="_blank" rel="noopener noreferrer" class="blog-card__link">Leer en el blog →</a>
+          </article>
+
+          <article class="blog-card" role="listitem">
+            <p class="blog-card__tag">Cibercultura</p>
+            <h3 class="blog-card__title">Prosumo</h3>
+            <p class="blog-card__excerpt">
+              Reflexión sobre ser prosumidor en la web: la tensión entre crear, compartir y
+              la conservación de las obras propias en plataformas como Behance.
+            </p>
+            <a href="https://santiagohernandez58.wordpress.com/2025/10/05/prosumo/" target="_blank" rel="noopener noreferrer" class="blog-card__link">Leer en el blog →</a>
+          </article>
+
+          <article class="blog-card" role="listitem">
+            <p class="blog-card__tag">Creación</p>
+            <h3 class="blog-card__title">Bienvenidos</h3>
+            <p class="blog-card__excerpt">
+              El motivo detrás del blog diseñe: la necesidad que le da sentido al acto de crear,
+              y por qué diseñar sin motivo es solo decorar.
+            </p>
+            <a href="https://santiagohernandez58.wordpress.com/2025/10/06/sobre-mi/" target="_blank" rel="noopener noreferrer" class="blog-card__link">Leer en el blog →</a>
+          </article>
+
+          <article class="blog-card" role="listitem">
+            <p class="blog-card__tag">Interfaces</p>
+            <h3 class="blog-card__title">Interfases GUI</h3>
+            <p class="blog-card__excerpt">
+              Bocetos de interfaces directa y esqueumórfica: recorrido de museo inspirado en el
+              Louvre y en la aplicación Encarta 2009.
+            </p>
+            <a href="https://santiagohernandez58.wordpress.com/2026/05/25/interfases-gui/" target="_blank" rel="noopener noreferrer" class="blog-card__link">Leer en el blog →</a>
+          </article>
+
+        </div>
+
+        <div style="margin-top: var(--sp-5); text-align: center;">
+          <a href="https://santiagohernandez58.wordpress.com/" target="_blank" rel="noopener noreferrer" class="btn btn--outline">Ver todos los artículos →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA → INDEX -->
+    <div class="cta-strip" role="complementary">
+      <div class="container--narrow" style="text-align:center;">
+        <h2>¿Empezamos?</h2>
+        <p>Si tenés un proyecto en mente, un encargo académico o simplemente querés conversar sobre diseño.</p>
+        <a href="index.html#contacto" class="btn btn--inverse">Ir a contacto</a>
+      </div>
+    </div>
+
+<section class="section" aria-labelledby="referentes-title">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Influencias</p>
+      <h2 class="section-title" id="referentes-title">Referentes</h2>
+    </div>
+
+    <div class="courses-grid"> <!-- reutilizás la clase existente -->
+      
+      <div class="course-item">
+        <h3 class="course-item__title">Neville Brody</h3>
+        <p class="course-item__sub">Tipografía experimental</p>
+        <a href="https://www.brody-associates.com/" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+      </div>
+
+      <div class="course-item">
+        <h3 class="course-item__title">Massimo Vignelli</h3>
+        <p class="course-item__sub">Sistemas de diseño</p>
+        <a href="https://www.vignelli.com/" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+      </div>
+
+      <div class="course-item">
+        <h3 class="course-item__title">Paula Scher</h3>
+        <p class="course-item__sub">Identidad y tipografía</p>
+        <a href="https://www.pentagram.com/about/partners/paula-scher" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+      </div>
+
+      <div class="course-item">
+        <h3 class="course-item__title">Stefan Sagmeister</h3>
+        <p class="course-item__sub">Diseño conceptual</p>
+        <a href="https://sagmeisterwalsh.com/" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <section class="section" aria-labelledby="media-title">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Preferencias audiovisuales</p>
+      <h2 class="section-title" id="media-title">Lo que escucho mientras diseño</h2>
+    </div>
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid var(--c-border);">
+      <iframe
+        src="https://youtu.be/17HREzdfU10?si=UJqF8eaRG2cximUZ"
+        title="Nombre del video — Artista"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <p style="margin-top: var(--sp-2); font-family: var(--f-heading); font-size: var(--fs-xs); color: var(--c-text-soft);">
+      «Nombre del video» — Artista/Canal. 
+      Publicado en <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
+      bajo licencia estándar de YouTube.
+    </p>
+
+  </div>
+</section>
+
+  </main>
+
+  <!--  FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <span class="footer-brand">diseñe | Santiago Hernandez</span>
+
+        <nav class="footer-nav" aria-label="Navegación del pie de página">
+          <a href="index.html">Inicio</a>
+          <a href="#portfolio">Portafolio</a>
+          <a href="#trayectoria">Trayectoria</a>
+          <a href="https://santiagohernandez58.wordpress.com/" target="_blank" rel="noopener noreferrer">Blog</a>
+        </nav>
+
+        <!-- Licencia Creative Commons -->
+<div class="license" rel="license">
+  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer license">
+    <img
+      src="https://licensebuttons.net/l/by-nc/4.0/88x31.png"
+      alt="Licencia Creative Commons Atribución-NoComercial 4.0 Internacional"
+      width="88" height="31"
+    />
+  </a>
+  <p>
+    Este trabajo de <span property="cc:attributionName">Santiago Hernandez</span>
+    está bajo una licencia
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">
+      Creative Commons Atribución-NoComercial 4.0 Internacional
+    </a>.
+  </p>
+</div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('.site-nav__list');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      navList.classList.toggle('is-open');
+      document.body.style.overflow = expanded ? '' : 'hidden';
+    });
+
+    navList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
